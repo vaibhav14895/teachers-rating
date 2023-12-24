@@ -58,7 +58,7 @@ def register(request):
             user_object.save()
             return render(request,"otp.html")
         except Exception as e:
-            messages.error(request, "Something went wrong during registration.")
+            messages.error(request, "Something went wrong during registration please try again")
 
         return redirect("register")
 
