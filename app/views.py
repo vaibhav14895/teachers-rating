@@ -1,4 +1,5 @@
 from pickle import NONE
+import re
 from django.shortcuts import render,redirect
 from h11 import Response
 from urllib3 import HTTPResponse
@@ -89,9 +90,13 @@ def otp_verify(request):
         if data is not None:
             return redirect("rating")
         else:
-            return HTTPResponse("wrong otp or username")
+            messages.error(request, "incorrect credentials")
+            return redirect('/')
     else:
-        return render(request,"otp.html")    
+        return render(request,"otp.html")  
+    
+    
+      
 from django.db.models import F, Sum
 
 
@@ -108,13 +113,15 @@ def rating(request):
     if request.method=="POST":
         fulldata=request.POST
         dynamic_values = {key: value[0] for key, value in fulldata.items() if key != 'csrfmiddlewaretoken' and len(value) > 0}
-        for name, value in dynamic_values.items():
-            instance=Teacher.objects.get(name=name)
-            if value=="0":
-                instance.best=instance.best+1
-            elif value=="1":
-                instance.average=instance.average+1
-            else:
-                instance.worst=instance.worst+1
-            instance.save()
+        if dynamic_values is not NONE:    
+            for name, value in dynamic_values.items():
+                instance=Teacher.objects.get(name=name)
+                if value=="0":
+                    instance.best=instance.best+1
+                elif value=="1":
+                    instance.average=instance.average+1
+                else:
+                    instance.worst=instance.worst+1
+                instance.save()
+        return redirect('home')
     return render(request,"rating.html",context)

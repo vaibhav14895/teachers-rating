@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home),
+    path('home/', views.home,name="home"),
     path('', views.login_page,name="login"),
     path('register/', views.register,name="register"),
     path('otp_verify/', views.otp_verify,name="otp_verify"),

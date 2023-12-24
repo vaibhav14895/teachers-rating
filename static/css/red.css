@@ -1,0 +1,28 @@
+table {
+    background-color: aliceblue;
+    padding: 40px;
+    margin: 20px;
+    border-spacing: 10px;
+}
+
+th {
+    background-color: blanchedalmond;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+}
+
+td {
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: large;
+}
+
+
+
+button {
+    padding: 20px 10px;
+    color: bisque;
+}
