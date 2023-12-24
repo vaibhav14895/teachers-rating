@@ -50,15 +50,12 @@ def register(request):
             if User.objects.filter(username=username).exists():
                 messages.error(request, "Username is taken.")
                 return redirect("register")
-
-            user_object = User.objects.create(username=username)
-            user_object.set_password(password)
-            
-            user_object.save()
-            
-            messages.success(request, "User created successfully.")
             otp = random.randint(1000, 9999)
             send_email_to_user(username,otp)
+            user_object = User.objects.create(username=username)
+            user_object.set_password(password)
+            messages.success(request, "User created successfully.")
+            user_object.save()
             return render(request,"otp.html")
         except Exception as e:
             messages.error(request, "Something went wrong during registration.")
