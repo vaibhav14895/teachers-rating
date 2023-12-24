@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-u@zg&yk&f%d0%0ldz2yszkk+5jm%0_y453ag)7i1zp8s6#i1(&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Teachersrating.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
