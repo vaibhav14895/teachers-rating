@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <main>
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" placeholder="username" name="username"><br>
+
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" placeholder="password" name="password"><br>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+                <a href="{% url 'register' %}">
+                    Register
+                </a>
+
+            </div>
+
+
+        </form>
+    </main>
+
+</body>
+
+</html>

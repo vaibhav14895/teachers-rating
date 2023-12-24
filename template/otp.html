@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>OTP</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>OTP verification</h1>
+    </header>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <main>
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">username</label>
+                <input type="text" placeholder="username" name="username"><br>
+
+            </div>
+            <div class="form-group">
+                <label for="otp">OTP</label>
+                <input type="text" placeholder="otp" name="otp"><br>
+
+            </div>
+            <div class="form-group">
+                <button type="submit">Verify</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+
+</html>
