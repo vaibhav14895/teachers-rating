@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
+
+from pizza.pizza.settings import STATICFILES_DIRS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-u@zg&yk&f%d0%0ldz2yszkk+5jm%0_y453ag)7i1zp8s6#i1(&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Teachersrating.com']
 
 
 # Application definition
@@ -120,7 +124,8 @@ import os
 STATIC_URL = '/static/'
 
 # Absolute filesystem path to the directory that will hold collected static files.
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT =os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
